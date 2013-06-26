@@ -65,21 +65,21 @@
 
   <script>
     function launchTest() {
-    require([
-      <% scripts.src.forEach(function(script, i){ %>
-        <% script = script.replace(/\\/g, '/') // replace all backward slashes to forward slash %>
-        '<%= script %>' <%= i < scripts.src.length-1 ? ',' : '' %>
-      <% }) %>
-    ],
-    function(){
+      require([
+        'jquery'
+      ], function ($) {
+        require([
+          './client/common/test/jasmine/lib/jquery.mockjax.js',
+          './client/common/test/jasmine/setup.js'
+        ], function () {
       require(['<%= [].concat(scripts.specs,scripts.reporters).join("','") %>'], function(){
         require(['<%= scripts.start.join("','") %>'], function(){
           // good to go! Our tests should already be running.
+          })
         })
       })
-    }
-    )
-  }
+    })
+   }
   </script>
 
   <% if (!hasCallback) { %>
