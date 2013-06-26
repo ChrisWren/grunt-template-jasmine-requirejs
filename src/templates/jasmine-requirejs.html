@@ -70,6 +70,7 @@
       ], function ($) {
         require([
           './client/common/test/jasmine/lib/jquery.mockjax.js',
+          'client/common/test/jasmine/lib/jasmine-jquery.js',
           './client/common/test/jasmine/setup.js'
         ], function () {
       require(['<%= [].concat(scripts.specs,scripts.reporters).join("','") %>'], function(){
